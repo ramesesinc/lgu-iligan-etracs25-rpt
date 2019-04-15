@@ -1,0 +1,28 @@
+import com.rameses.annotations.*;
+
+class QueueCounterInterceptor {
+	
+	@Service('QueueService') 
+	def queueSvc; 
+
+	@After(pattern="QueueCounterService.create")
+	void afterCreate( evt ) {
+		queueSvc.notify([ type: 'RELOAD' ]); 
+	} 
+
+	@After(pattern="QueueCounterService.update")
+	void afterUpdate( evt ) { 
+		queueSvc.notify([ type: 'RELOAD' ]);
+	} 
+
+	@After(pattern="QueueCounterService.addSection")
+	void afterAddSection( evt ) {
+		queueSvc.notify([ type: 'RELOAD' ]);
+	} 
+
+	@After(pattern="QueueCounterService.removeSection")
+	void afterRemoveSection( evt ) { 
+		queueSvc.notify([ type: 'RELOAD' ]);
+	} 
+
+}

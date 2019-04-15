@@ -1,0 +1,53 @@
+import com.rameses.annotations.*;
+import com.rameses.util.*;
+
+class IndividualCtcReceiptInterceptor {
+
+	@ActiveDB('ctc_individual')
+	def em
+
+	@Service('PersistenceService')
+	def persistenceSvc; 
+
+	@Service('DateService')
+	def dtSvc; 
+
+	String SCHEMA_NAME = 'entityindividual'; 
+	
+	@After(pattern="CashReceiptService.post", eval="#{result.formno=='0016' && result.txnmode != 'CAPTURE'}")
+	public void interceptCashReceipPost( evt ) { 
+		def ctc = evt.result;	
+		if (ctc.payer.birthdate) { 
+			ctc.payer.birthdate = dtSvc.parse('yyyy-MM-dd', ctc.payer.birthdate)
+		} 
+		em.create( ctc ); 
+		ctc.payer._schemaname = SCHEMA_NAME; 
+		ctc.payer.findBy = [objid: ctc.payer.objid]; 
+		persistenceSvc.update( ctc.payer ); 
+	}
+
+	@After(pattern="CashReceiptService.open", eval="#{result.formno=='0016' && result.txnmode != 'CAPTURE'}")
+	public void onOpenReceipt( evt ) { 
+		def ctc = evt.result; 
+		def ctcext = em.read(ctc); 
+		if ( !ctcext ) return; 
+		
+		ctc.payer.putAll( ctcext.payer ); 
+		ctcext.remove('payer'); 
+		ctc.putAll( ctcext ); 
+
+		ctc.payer._schemaname = SCHEMA_NAME; 
+		ctc.payer.findBy = [objid: ctc.payer.objid]; 
+		def o = persistenceSvc.read( ctc.payer ); 
+		if ( o ) { 
+			o.putAll( ctc.payer ); 
+			ctc.payer.putAll( o ); 
+			evt.result.putAll( ctc ); 
+		} 
+	} 
+
+	@After(pattern="PersistenceService.read", eval="#{ args[0]._schemaname == 'cashreceipt' && result.formno == '0016' }")
+	public void loadCtcInfo( evt ) { 
+		onOpenReceipt( evt ); 
+	} 
+} 
