@@ -1,0 +1,26 @@
+
+import com.rameses.annotations.*;
+import com.rameses.common.*;
+
+class IliganRPTReportDelinquencyService
+{
+	@ActiveDB("iligan_rptis")
+	def em;
+
+	@ProxyMethod
+	public def getReport( params ) { 
+		params.filter = '';
+		if ( params.period?.code == 'FOR_THE_YEAR' ) {
+			params.filter = ''' AND rpti.year = $P{year} ''';
+		} else if ( params.period?.code == 'AS_OF_YEAR' ) {
+			params.filter = ''' AND rpti.year <= $P{year} ''';
+		} else { 
+			params.filter = ' AND 1=0 '; 
+		} 
+
+		def list = em.getList( params );
+		if ( !list ) throw new Exception('No records found.'); 
+
+		return [ reportdata : list ]; 
+	} 
+} 

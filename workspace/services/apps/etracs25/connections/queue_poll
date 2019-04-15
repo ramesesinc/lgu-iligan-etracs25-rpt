@@ -1,0 +1,3 @@
+provider=http
+http.host=localhost:8580/poll
+http.action=queue_poll

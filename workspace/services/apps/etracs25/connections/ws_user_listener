@@ -1,0 +1,4 @@
+provider=websocket
+ws.host=localhost:8561
+ws.protocol=user
+ws.enabled=true
