@@ -1,0 +1,11 @@
+.osiris_pid
+.shutdown_pid
+Thumbs.db
+tmp
+baks
+bak
+client
+patches
+zpatches
+*.lnk
+*.bak*
