@@ -1,0 +1,5 @@
+dialect=mssql
+driverClass=com.microsoft.sqlserver.jdbc.SQLServerDriver
+url=jdbc:sqlserver://110.100.210.7;DatabaseName=queue
+user=sa
+pwd=1paSsword1

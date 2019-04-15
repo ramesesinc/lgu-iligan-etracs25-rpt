@@ -1,0 +1,6 @@
+dialect=mssql
+driverClass=net.sourceforge.jtds.jdbc.Driver
+url=jdbc:jtds:sqlserver://110.100.210.5/tracs
+user=etracs
+pwd=etrAcs
+ver=2000
