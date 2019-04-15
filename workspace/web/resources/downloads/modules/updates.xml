@@ -1,0 +1,100 @@
+<app>
+<env>
+app.title=ETRACS 2.5 v2.5.05.032-03021 build 05 20181116 ILIGAN CITY svr7 - Live
+app.host=110.100.210.7:8570
+app.cluster=osiris3
+app.context=etracs25
+app.help=http://110.100.210.7:8580/help
+app.loader=com.rameses.osiris2.client.OsirisAppLoader
+readTimeout=120000
+connectionTimeout=5000
+
+ws.host=110.100.210.7:8560
+app.custom=iligan
+report.custom=iligan
+</env>
+<modules>
+
+	<!-- custom modules -->
+	
+     	<module file="custom/rptis-iligan-assessment-report.jar" version="1.0"/>
+	<module file="custom/iligan-deposit-slip.jar" version="1.3"/> 
+	<module file="custom/iligan-depositslip-reports.jar" version="1.0"/>
+	<!-- rptis custom libraries -->
+	<module file="custom/gov-lgu-iligan-rptis-report-taxdec.jar" version="1.1"/>
+	<module file="custom/gov-lgu-iligan-rptis-landtax.jar" version="1.0"/>
+	<module file="custom/gov-lgu-iligan-rptis-certiciation.jar" version="1.0"/>
+	<module file="custom/rptcertification-iligancustom.jar" version="1.4"/>
+	<module file="custom/gov-lgu-iligan-bpls.jar" version="1.2"/>
+	<module file="custom/gov-lgu-iligan-ctc.jar" version="1.1"/>
+	<module file="custom/gov-lgu-iligan-treasury.jar" version="1.0"/>
+	<module file="custom/gov-lgu-iligan-main.jar" version="1.0"/>	
+
+	<module file="custom/gov-lgu-iligan-rptis.jar" version="1.5"/>
+	<module file="custom/gov-lgu-iligan-rptis-report-rpa.jar" version="1.1"/>
+
+    <module file="custom/rptdelinquentnopenalty.jar" version= "1.2"/>
+	<module file="custom/gov-lgu-iligan.jar" version="1.66"/>
+ 
+	<!-- 3rd party libs --> 
+	<module file="libs/commons-net-3.5.jar" version="2.5"/>
+
+		<!-- core libraries -->
+	<module file="core/osiris2-client-themes.jar" version="2.21"/>
+	<module file="core/osiris2-client-ui.jar" version="2.21"/>
+	<module file="core/osiris2-draw.jar" version="2.21"/>
+	<module file="core/osiris2-framework.jar" version="2.21"/>
+	<module file="core/osiris2-report.jar" version="2.21"/>
+	<module file="core/rameses-client-ui.jar" version="2.21"/>
+	<module file="core/rameses-client-ui-bio.jar" version="2.21"/>
+	<module file="core/rameses-common2.jar" version="2.21"/>
+	<module file="core/rameses-custom-impl.jar" version="2.21"/>
+	<module file="core/rameses-jdbc16.jar" version="2.21"/>
+	<module file="core/rameses-seti.jar" version="2.21"/>
+ 
+	<!-- shared libraries -->
+	<module file="shared/client-system.jar" version="2.21"/>
+	<module file="shared/client-ui-extended.jar" version="2.21"/>
+	<module file="shared/rameses-client-menu.jar" version="2.21"/>
+	<module file="shared/rameses-client-report.jar" version="2.21"/>
+	<module file="shared/rameses-enterprise.jar" version="2.21"/>
+	<module file="shared/rameses-enterprise-admin.jar" version="2.21"/>
+	<module file="shared/rameses-enterprise-entity.jar" version="2.21"/>
+	<module file="shared/rameses-enterprise-financial.jar" version="2.21"/>
+	<module file="shared/rameses-rules-mgmt.jar" version="2.21"/>
+	<module file="shared/rameses-workflow-mgmt.jar" version="2.21"/>
+
+	<!-- main app libraries -->
+      <module file="iligan-summary-delinquency.jar" version="1.0"/>
+	<module file="rameses-treasury-common.jar" version="2.9"/>
+	<module file="rameses-client-notification2.jar" version="2.22"/>	
+	<module file="rameses-etracs-main.jar" version="2.21"/>
+	<module file="rameses-gov-depositslip.jar" version="2.21"/>
+	<module file="rameses-gov-epayment.jar" version="2.21"/>
+	<module file="rameses-gov-etracs-entity.jar" version="2.21"/>
+	<module file="rameses-gov-etracs-tools.jar" version="2.21"/>	
+	<module file="rameses-gov-lgu.jar" version="2.21"/>
+	<module file="rameses-gov-lgu-treasury.jar" version="2.21"/>
+	<module file="rameses-gov-treasury.jar" version="2.22"/>
+	<module file="rameses-gov-treasury-report.jar" version="2.21"/>
+	<module file="rameses-gov-treasury-tool.jar" version="2.21"/>
+	<module file="rameses-gov-etracs-signatory-template.jar" version="2.5"/>
+
+
+	<module file="rameses-gov-etracs-bpls.jar" version="2.5"/>
+	<module file="rameses-gov-etracs-bpls-ceo.jar" version="2.6"/>
+	<module file="rameses-gov-etracs-bpls-reports.jar" version="2.5"/>
+
+	<module file="rameses-gov-etracs-rptis.jar" version="2.17"/>
+	<module file="rameses-gov-etracs-rptis-city.jar" version="2.9"/>
+	<module file="rameses-gov-etracs-rptis-landtax.jar" version="2.22"/>
+	<module file="rameses-gov-etracs-rptis-landtax-report.jar" version="2.22"/>
+	<module file="rameses-gov-etracs-rptis-report.jar" version="2.13"/>
+	<module file="rameses-gov-etracs-signatory-template.jar" version="2.5"/>
+ 
+ 
+	<!-- plugin modules -->
+	<module file="plugins/rameses-gov-etracs-ctc.jar" version="2.22"/>
+	<module file="plugins/rameses-queueing.jar" version="1.4"/>
+</modules>
+</app>
